@@ -37,7 +37,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
                 <a class="collapse-item" href="{{ url("admin-screen/map") }}">List</a>
-                <a class="collapse-item" href="{{ url("admin-screen/map/new") }}">New</a>
+                <a class="collapse-item" href="{{ url("admin-screen/map/create") }}">New</a>
             </div>
         </div>
     </li>

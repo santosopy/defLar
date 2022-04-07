@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix("admin-screen")->group(function(){
-    Route::resource('map', AdminController::class);
-});
+// Route::middleware(['admin'])->group(function () {
+    Route::prefix("admin-screen")->group(function(){
+        Route::resource('map', AdminController::class);
+    });
+// });
