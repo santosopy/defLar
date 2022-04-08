@@ -17,7 +17,8 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->isAdmin == 1){
+        $isAdmin = Auth::user()->toArray()["is_admin"];
+        if($isAdmin == 1){
             return $next($request);
         }
         else{

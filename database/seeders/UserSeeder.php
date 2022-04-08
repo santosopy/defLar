@@ -17,10 +17,24 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::insert([
-            'name' => "admin",
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('123456'),
-            'is_admin' => 1,
+            // [
+            //     'name' => "admin",
+            //     'email' => 'admin@admin.com',
+            //     'password' => Hash::make('123456'),
+            //     'is_admin' => 1, 
+            // ],
+            // [
+            //     'name' => "user1",
+            //     'email' => 'user1@user.com',
+            //     'password' => Hash::make('123456'),
+            //     'is_admin' => 0,
+            // ],
+            [
+                'name' => "user2",
+                'email' => 'user2@user.com',
+                'password' => Hash::make('123456'),
+                'is_admin' => 0,
+            ]
         ]);
     }
 }

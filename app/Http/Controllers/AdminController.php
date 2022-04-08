@@ -14,8 +14,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        dump($user);
         return view("admin-screen.map.map");
     }
 
