@@ -27,7 +27,7 @@
         </div>
         @endif
 
-        <form class="form" role="form" autocomplete="off" action="{{ url("admin-screen/map") }}" method="POST">@csrf
+        <form class="form" role="form" autocomplete="off" action="{{ route("map.store") }}" method="POST">@csrf
             <div class="form-group row">
                 <label class="col-lg-3 col-form-label form-control-label">Date</label>
                 <div class="col-lg-9">

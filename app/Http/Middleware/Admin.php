@@ -17,12 +17,17 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        $isAdmin = Auth::user()->toArray()["is_admin"];
-        if($isAdmin == 1){
-            return $next($request);
+        if( Auth::user() == null ){
+            return redirect("/")->with("error", "you have not admin access");
         }
         else{
-            return redirect("/")->with("error", "you have not admin access");
+            $isAdmin = Auth::user()->toArray()["is_admin"];
+            if($isAdmin == 1){
+                return $next($request);
+            }
+            else{
+                return redirect("/")->with("error", "you have not admin access");
+            }
         }
     }
 }

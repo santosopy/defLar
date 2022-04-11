@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\fallbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,5 @@ Route::middleware(['admin'])->group(function () {
         Route::resource('map', AdminController::class);
     });
 });
+
+Route::fallback(fallbackController::class);
