@@ -3,14 +3,35 @@
 @section("content")
 <div class="card card-outline-secondary w-50">
     <div class="card-header">
-        <h3 class="mb-0">User Information</h3>
+        <h3 class="mb-0">Memo</h3>
     </div>
     <div class="card-body">
-        <form class="form" role="form" autocomplete="off">@csrf
+
+        @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+            @endforeach
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <p>{{ session('success') }}</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
+        <form class="form" role="form" autocomplete="off" action="{{ url("admin-screen/map") }}" method="POST">@csrf
             <div class="form-group row">
                 <label class="col-lg-3 col-form-label form-control-label">Date</label>
                 <div class="col-lg-9">
-                    <input placeholder="Select date" type="text" id="date" class="form-control">
+                    <input placeholder="Select date" type="text" id="date" class="form-control" name="date">
                     <script>
                         jQuery(function($){ 
                             $('#date').datepicker({
@@ -43,7 +64,7 @@
                 <label class="col-lg-3 col-form-label form-control-label"></label>
                 <div class="col-lg-9">
                     <input type="reset" class="btn btn-secondary" value="Cancel">
-                    <input type="button" class="btn btn-primary" value="Save Changes">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
                 </div>
             </div>
             {{-- <div class="form-group row">

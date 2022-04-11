@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Memo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view("admin-screen.map.map");
+        $data = Memo::get()->toArray();
+        return view("admin-screen.map.map")->with(compact("data"));
     }
 
     /**
@@ -35,7 +37,24 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->toArray();
+        $rules = [
+            "lat"=> "required",
+            "lang"=> "required",
+        ];
+        $message = [
+            "lat.required"=> "lat required",
+            "lang.required"=> "lang required",
+        ];
+        $request->validate($rules, $rules, $message);
+        Memo::insert([
+            "date"=> $request->date,
+            "lat"=> $request->lat,
+            "lang"=> $request->lang,
+            "total"=> $request->total
+        ]);
+        // dd($request);
+        return back()->with("success", "data was registered");
     }
 
     /**
