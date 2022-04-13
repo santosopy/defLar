@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\fallbackController;
+use App\Http\Controllers\AdminReserveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ require __DIR__.'/auth.php';
 Route::middleware(['admin'])->group(function () {
     Route::prefix("admin-screen")->group(function(){
         Route::resource('map', AdminController::class);
+        Route::get('/reserve', [AdminReserveController::class, 'index'])->name("reserve");
     });
 });
 
